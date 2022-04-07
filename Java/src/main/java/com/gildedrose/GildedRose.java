@@ -17,7 +17,7 @@ class GildedRose {
 
     private void updateItemValues(int i, String itemName) {
         if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
-            items[i].quality = 80;
+            items[i].quality = Quality.SULFURAS.value;
             items[i].sellIn++;
         } else if (itemName.equals("Aged Brie")) {
             items[i].quality += getStandardIncrementValue(i, 1);
@@ -31,10 +31,10 @@ class GildedRose {
     }
 
     private void resetQuality(int i) {
-        if (items[i].quality >= 50 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+        if (items[i].quality >= Quality.MAX.value && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
             items[i].quality = 50;
         }
-        else if (items[i].quality < 0) {
+        else if (items[i].quality < Quality.MIN.value) {
             items[i].quality = 0;
         }
     }
