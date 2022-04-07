@@ -41,7 +41,7 @@ class GildedRose {
     }
 
     private int getStandardIncrementValue(int index, int multiplier) {
-        return items[index].sellIn >= 0 ? 1 * multiplier : 2 * multiplier;
+        return items[index].sellIn >= 0 ? multiplier : 2 * multiplier;
     }
 
     private int getTicketIncrementValue(int index) {

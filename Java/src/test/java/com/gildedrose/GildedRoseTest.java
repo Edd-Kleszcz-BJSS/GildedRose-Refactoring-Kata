@@ -4,11 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GildedRoseTest {
-    private GildedRose addAndUpdateApp(Item[] products) {
-        Item[] items = products;
+    private GildedRose addAndUpdateApp(Item[] items) {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         return app;
@@ -164,14 +162,14 @@ class GildedRoseTest {
     @Test
     void givenAnItemWithNegativeQuality_throwsAnErrorBeforeAppCreation() {
         Item item = new Item("test", 10, -1);
-        RuntimeException exception = Assertions.assertThrows(new RuntimeException().getClass(), () -> new GildedRose(new Item[] {item}));
+        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
         assertEquals("Item quality insufficient",exception.getMessage());
     }
 
     @Test
     void givenAnItemWithExtremeQuality_throwsAnErrorBeforeAppCreation() {
         Item item = new Item("test", 10, 51);
-        RuntimeException exception = Assertions.assertThrows(new RuntimeException().getClass(), () -> new GildedRose(new Item[] {item}));
+        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
         assertEquals("Item quality extreme",exception.getMessage());
     }
 
@@ -186,21 +184,20 @@ class GildedRoseTest {
     @Test
     void givenEmptyItemsArray_throwsAnException() {
         Item[] items = new Item[] {};
-        NullPointerException exception = Assertions.assertThrows(new NullPointerException().getClass(), () -> new GildedRose(items));
+        NullPointerException exception = Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(items));
         assertEquals("Items empty", exception.getMessage());
     }
 
     @Test
     void givenNullFieldInItem_throwsNullException() {
         Item[] items = new Item[] {new Item(null, 0, 0)};
-        NullPointerException exception = Assertions.assertThrows(new NullPointerException().getClass(), () -> new GildedRose(items));
+        NullPointerException exception = Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(items));
         assertEquals("Items must be fully defined",exception.getMessage());
     }
 
     @Test
     void givenNullItemsArray_throwsNullException() {
-        Item[] items = null;
-        NullPointerException exception = Assertions.assertThrows(new NullPointerException().getClass(), () -> new GildedRose(items));
+        NullPointerException exception = Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(null));
         assertEquals("Items must be fully defined", exception.getMessage());
     }
 }

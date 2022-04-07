@@ -12,20 +12,20 @@ public class ItemChecker {
         } else if (items.length == 0) {
             throw new NullPointerException("Items empty");
         }
-        for (int index = 0; index < items.length; index++) {
-            if (items[index].name == null) {
+        for (Item item : items) {
+            if (item.name == null) {
                 throw new NullPointerException("Items must be fully defined");
             }
         }
     }
 
     private static void allHaveValidQuality(Item[] items) throws RuntimeException {
-        for (int index = 0; index < items.length; index++) {
-            if (items[index].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[index].quality = Quality.SULFURAS.value;
-            } else if (items[index].quality < Quality.MIN.value) {
+        for (Item item : items) {
+            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                item.quality = Quality.SULFURAS.value;
+            } else if (item.quality < Quality.MIN.value) {
                 throw new RuntimeException("Item quality insufficient");
-            } else if (items[index].quality > Quality.MAX.value) {
+            } else if (item.quality > Quality.MAX.value) {
                 throw new RuntimeException("Item quality extreme");
             }
         }
