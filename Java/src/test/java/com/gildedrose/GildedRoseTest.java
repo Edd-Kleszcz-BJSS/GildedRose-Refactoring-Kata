@@ -131,6 +131,16 @@ class GildedRoseTest {
     }
 
     @Test
+    void givenBackstagePassAfterSellInAfterMultipleDays_returnsConsistent0Quality() {
+        GildedRose app = new GildedRose(new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10)});
+        app.updateQuality();
+        app.updateQuality();
+        app.updateQuality();
+        assertEquals(0, getQuality(app, 0));
+        assertEquals(-3, getSellIn(app, 0));
+    }
+
+    @Test
     void givenConjuredItemBeforeSellIn_returnDeprecatedQuality() {
         GildedRose app = addAndUpdateApp(new Item[]{new Item("Conjured Wand", 10, 10), new Item("Conjured Broom", 10, 10)});
         assertEquals(8, getQuality(app, 0));
