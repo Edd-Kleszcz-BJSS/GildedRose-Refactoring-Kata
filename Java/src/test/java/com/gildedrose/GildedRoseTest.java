@@ -86,6 +86,14 @@ class GildedRoseTest {
     }
 
     @Test
+    void givenSulfurasItem_returnAppropriateQualityBeforeUpdate() {
+        Item item = new Item("Sulfuras, Hand of Ragnaros", 10, 70);
+        GildedRose app = new GildedRose(new Item[] {item});
+        assertEquals(80, getQuality(app, 0));
+        assertEquals(10, getSellIn(app, 0));
+    }
+
+    @Test
     void givenBackstagePassBeforeLargeSellIn_returnIncrementedQuality() {
         GildedRose app = addAndUpdateApp(new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 20, 5)});
         assertEquals(6, getQuality(app, 0));
@@ -176,10 +184,9 @@ class GildedRoseTest {
     }
 
     @Test
-    void givenSulfurasItem_returnAppropriateQualityBeforeUpdate() {
-        Item item = new Item("Sulfuras, Hand of Ragnaros", 10, 70);
-        GildedRose app = new GildedRose(new Item[] {item});
-        assertEquals(80, getQuality(app, 0));
-        assertEquals(10, getSellIn(app, 0));
+    void givenEmptyItemsArray_throwsAnException() {
+        Item[] items = new Item[] {};
+        NullPointerException exception = Assertions.assertThrows(new NullPointerException().getClass(), () -> new GildedRose(items));
+        assertEquals("Items empty", exception.getMessage());
     }
 }
