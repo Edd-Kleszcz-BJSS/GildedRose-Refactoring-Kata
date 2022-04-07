@@ -31,12 +31,16 @@ class GildedRose {
     }
 
     private void resetQuality(int i) {
-        if (items[i].quality >= 50 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) items[i].quality = 50;
-        else if (items[i].quality < 0) items[i].quality = 0;
+        if (items[i].quality >= 50 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+            items[i].quality = 50;
+        }
+        else if (items[i].quality < 0) {
+            items[i].quality = 0;
+        }
     }
 
-    private int getStandardIncrementValue(int i, int muliplier) {
-        return items[i].sellIn >= 0 ? 1 * muliplier : 2 * muliplier;
+    private int getStandardIncrementValue(int i, int multiplier) {
+        return items[i].sellIn >= 0 ? 1 * multiplier : 2 * multiplier;
     }
 
     private int getTicketIncrementValue(int i) {

@@ -140,4 +140,12 @@ class GildedRoseTest {
         assertEquals(-1, getSellIn(app, 1));
     }
 
+    @Test
+    void givenConjuredItemWithLowQuality_returnZeroQuality() {
+        GildedRose app = addAndUpdateApp(new Item[]{new Item("Conjured Wand", 2, 1), new Item("Conjured Broom", 10, 0)});
+        assertEquals(0, getQuality(app, 0));
+        assertEquals(0, getQuality(app, 1));
+        assertEquals(1, getSellIn(app, 0));
+        assertEquals(9, getSellIn(app, 1));
+    }
 }
