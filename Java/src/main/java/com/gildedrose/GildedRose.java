@@ -23,13 +23,12 @@ class GildedRose {
             items[i].quality += getStandardIncrementValue(i, 1);
         } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
             items[i].quality += getTicketIncrementValue(i);
-        } else if(itemName.contains("Conjured")) {
+        } else if (itemName.contains("Conjured")) {
             items[i].quality -= getStandardIncrementValue(i, 2);
         } else {
             items[i].quality -= getStandardIncrementValue(i, 1);
         }
     }
-
 
     private void resetQuality(int i) {
         if (items[i].quality >= 50 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) items[i].quality = 50;
