@@ -174,4 +174,12 @@ class GildedRoseTest {
         assertEquals(80, getQuality(app, 0));
         assertEquals(10, getSellIn(app, 0));
     }
+
+    @Test
+    void givenSulfurasItem_returnAppropriateQualityBeforeUpdate() {
+        Item item = new Item("Sulfuras, Hand of Ragnaros", 10, 70);
+        GildedRose app = new GildedRose(new Item[] {item});
+        assertEquals(80, getQuality(app, 0));
+        assertEquals(10, getSellIn(app, 0));
+    }
 }
