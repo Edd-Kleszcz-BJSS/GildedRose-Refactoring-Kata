@@ -189,4 +189,18 @@ class GildedRoseTest {
         NullPointerException exception = Assertions.assertThrows(new NullPointerException().getClass(), () -> new GildedRose(items));
         assertEquals("Items empty", exception.getMessage());
     }
+
+    @Test
+    void givenNullFieldInItem_throwsNullException() {
+        Item[] items = new Item[] {new Item(null, 0, 0)};
+        NullPointerException exception = Assertions.assertThrows(new NullPointerException().getClass(), () -> new GildedRose(items));
+        assertEquals("Items must be fully defined",exception.getMessage());
+    }
+
+    @Test
+    void givenNullItemsArray_throwsNullException() {
+        Item[] items = null;
+        NullPointerException exception = Assertions.assertThrows(new NullPointerException().getClass(), () -> new GildedRose(items));
+        assertEquals("Items must be fully defined", exception.getMessage());
+    }
 }
