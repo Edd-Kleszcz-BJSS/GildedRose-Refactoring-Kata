@@ -10,56 +10,38 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             String itemName = items[i].name;
-            int itemQuality = items[i].quality;
-
-            if (!itemName.equals("Aged Brie")
-                    && !itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!itemName.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
-                    }
-                }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
-
-                    if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!itemName.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
-
-            if (items[i].sellIn < 0) {
-                if (!itemName.equals("Aged Brie")) {
-                    if (!itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].quality > 0) {
-                            if (!itemName.equals("Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
-                            }
-                        }
-                    } else {
-                        items[i].quality = items[i].quality - items[i].quality;
-                    }
-                } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
-                }
-            }
+            items[i].sellIn--;
+            updateItemValues(i, itemName);
+            resetQuality(i);
         }
+    }
+
+    private void updateItemValues(int i, String itemName) {
+        if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
+            items[i].sellIn++;
+        } else if (itemName.equals("Aged Brie")) {
+            int increment = items[i].sellIn >= 0 ? 1 : 2;
+            items[i].quality += increment;
+        } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            int increment = incrementPasses(i);
+            items[i].quality += increment;
+        } else {
+            int increment = items[i].sellIn >= 0 ? 1 : 2;
+            items[i].quality -= increment;
+        }
+    }
+
+    private void resetQuality(int i) {
+        if (items[i].quality >= 50) items[i].quality = 50;
+        else if (items[i].quality < 0) items[i].quality = 0;
+    }
+
+    private int incrementPasses(int i) {
+        int increment;
+        if (items[i].sellIn < 0) increment = -items[i].quality;
+        else if (items[i].sellIn < 5) increment = 3;
+        else if (items[i].sellIn < 10) increment = 2;
+        else increment = 1;
+        return increment;
     }
 }
