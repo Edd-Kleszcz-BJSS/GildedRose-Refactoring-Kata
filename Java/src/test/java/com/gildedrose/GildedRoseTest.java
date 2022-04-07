@@ -155,9 +155,15 @@ class GildedRoseTest {
 
     @Test
     void givenAnItemWithNegativeQuality_throwsAnErrorBeforeAppCreation() {
-        Item item = new Item("test", 10, -100);
-
+        Item item = new Item("test", 10, -1);
         RuntimeException exception = Assertions.assertThrows(new RuntimeException().getClass(), () -> new GildedRose(new Item[] {item}));
         assertEquals("Item quality insufficient",exception.getMessage());
+    }
+
+    @Test
+    void givenAnItemWithExtremeQuality_throwsAnErrorBeforeAppCreation() {
+        Item item = new Item("test", 10, 51);
+        RuntimeException exception = Assertions.assertThrows(new RuntimeException().getClass(), () -> new GildedRose(new Item[] {item}));
+        assertEquals("Item quality extreme",exception.getMessage());
     }
 }
