@@ -20,26 +20,28 @@ class GildedRose {
             items[i].quality = 80;
             items[i].sellIn++;
         } else if (itemName.equals("Aged Brie")) {
-            int increment = items[i].sellIn >= 0 ? 1 : 2;
-            items[i].quality += increment;
+            items[i].quality += getStandardIncrementValue(i, 1);
         } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            int increment = getIncrementValue(i);
+            int increment = getTicketIncrementValue(i);
             items[i].quality += increment;
         } else if(itemName.contains("Conjured")) {
-            int increment = items[i].sellIn >= 0 ? 2 : 4;
-            items[i].quality -= increment;
+            items[i].quality -= getStandardIncrementValue(i, 2);
         } else {
-            int increment = items[i].sellIn >= 0 ? 1 : 2;
-            items[i].quality -= increment;
+            items[i].quality -= getStandardIncrementValue(i, 1);
         }
     }
+
 
     private void resetQuality(int i) {
         if (items[i].quality >= 50 && !items[i].name.equals("Sulfuras, Hand of Ragnaros")) items[i].quality = 50;
         else if (items[i].quality < 0) items[i].quality = 0;
     }
 
-    private int getIncrementValue(int i) {
+    private int getStandardIncrementValue(int i, int muliplier) {
+        return items[i].sellIn >= 0 ? 1 * muliplier : 2 * muliplier;
+    }
+
+    private int getTicketIncrementValue(int i) {
         int increment;
         if (items[i].sellIn < 0) increment = -items[i].quality;
         else if (items[i].sellIn < 5) increment = 3;
