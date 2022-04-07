@@ -1,12 +1,12 @@
 package com.gildedrose;
 
 public class ItemChecker {
-    public static void areValidItems(Item[] items) {
+    public static void areValidItems(Item[] items) throws RuntimeException {
         containsItems(items);
         allHaveValidQuality(items);
     }
 
-    private static boolean containsItems(Item[] items) {
+    private static boolean containsItems(Item[] items) throws NullPointerException {
         boolean isEmpty = items.length == 0;
 
         if (isEmpty) {
