@@ -77,8 +77,8 @@ class GildedRoseTest {
     @Test
     void givenSulfuras_returnConstantQuality() {
         GildedRose app = addAndUpdateApp(new Item[] {new Item("Sulfuras, Hand of Ragnaros", 10, 15), new Item("Sulfuras, Hand of Ragnaros", 0, 25)});
-        assertEquals(15, getQuality(app, 0));
-        assertEquals(25, getQuality(app, 1));
+        assertEquals(80, getQuality(app, 0));
+        assertEquals(80, getQuality(app, 1));
         assertEquals(10, getSellIn(app, 0));
         assertEquals(0, getSellIn(app, 1));
     }
@@ -120,6 +120,24 @@ class GildedRoseTest {
         GildedRose app = addAndUpdateApp(new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10)});
         assertEquals(0, getQuality(app, 0));
         assertEquals(-1, getSellIn(app, 0));
+    }
+
+    @Test
+    void givenConjuredItemBeforeSellIn_returnDeprecatedQuality() {
+        GildedRose app = addAndUpdateApp(new Item[]{new Item("Conjured Wand", 10, 10), new Item("Conjured Broom", 10, 10)});
+        assertEquals(8, getQuality(app, 0));
+        assertEquals(8, getQuality(app, 1));
+        assertEquals(9, getSellIn(app, 0));
+        assertEquals(9, getSellIn(app, 1));
+    }
+
+    @Test
+    void givenConjuredItemAfterSellIn_returnDoubleDeprecatedQuality() {
+        GildedRose app = addAndUpdateApp(new Item[]{new Item("Conjured Wand", -2, 10), new Item("Conjured Broom", 0, 10)});
+        assertEquals(6, getQuality(app, 0));
+        assertEquals(6, getQuality(app, 1));
+        assertEquals(-3, getSellIn(app, 0));
+        assertEquals(-1, getSellIn(app, 1));
     }
 
 }
