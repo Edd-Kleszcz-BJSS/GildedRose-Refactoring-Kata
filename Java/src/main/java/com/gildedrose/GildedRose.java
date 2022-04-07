@@ -22,8 +22,7 @@ class GildedRose {
         } else if (itemName.equals("Aged Brie")) {
             items[i].quality += getStandardIncrementValue(i, 1);
         } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            int increment = getTicketIncrementValue(i);
-            items[i].quality += increment;
+            items[i].quality += getTicketIncrementValue(i);
         } else if(itemName.contains("Conjured")) {
             items[i].quality -= getStandardIncrementValue(i, 2);
         } else {
