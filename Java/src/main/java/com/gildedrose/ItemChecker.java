@@ -1,8 +1,9 @@
 package com.gildedrose;
 
 public class ItemChecker {
-    public static boolean areValidItems(Item[] items) {
-        return containsItems(items) && allHaveValidQuality(items);
+    public static void areValidItems(Item[] items) {
+        containsItems(items);
+        allHaveValidQuality(items);
     }
 
     private static boolean containsItems(Item[] items) {

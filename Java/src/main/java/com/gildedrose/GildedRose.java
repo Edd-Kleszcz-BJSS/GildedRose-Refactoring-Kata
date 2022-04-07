@@ -4,9 +4,8 @@ class GildedRose {
     Item[] items;
 
     public GildedRose(Item[] items) {
-        if (ItemChecker.areValidItems(items)) {
-            this.items = items;
-        }
+        ItemChecker.areValidItems(items);
+        this.items = items;
     }
 
     public void updateQuality() {
