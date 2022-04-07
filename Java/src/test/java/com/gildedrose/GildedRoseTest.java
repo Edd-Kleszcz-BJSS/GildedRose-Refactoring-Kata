@@ -1,8 +1,10 @@
 package com.gildedrose;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GildedRoseTest {
     private GildedRose addAndUpdateApp(Item[] products) {
@@ -147,5 +149,15 @@ class GildedRoseTest {
         assertEquals(0, getQuality(app, 1));
         assertEquals(1, getSellIn(app, 0));
         assertEquals(9, getSellIn(app, 1));
+    }
+
+    // *** SAD TESTS ***
+
+    @Test
+    void givenAnItemWithNegativeQuality_throwsAnErrorBeforeAppCreation() {
+        Item item = new Item("test", 10, -100);
+
+        RuntimeException exception = Assertions.assertThrows(new RuntimeException().getClass(), () -> new GildedRose(new Item[] {item}));
+        assertEquals("Item quality insufficient",exception.getMessage());
     }
 }
