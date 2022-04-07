@@ -166,4 +166,12 @@ class GildedRoseTest {
         RuntimeException exception = Assertions.assertThrows(new RuntimeException().getClass(), () -> new GildedRose(new Item[] {item}));
         assertEquals("Item quality extreme",exception.getMessage());
     }
+
+    @Test
+    void givenSulfurasItemWithAppropriateQuality_returnAppAsUsual() {
+        Item item = new Item("Sulfuras, Hand of Ragnaros", 10, 80);
+        GildedRose app = new GildedRose(new Item[] {item});
+        assertEquals(80, getQuality(app, 0));
+        assertEquals(10, getSellIn(app, 0));
+    }
 }
