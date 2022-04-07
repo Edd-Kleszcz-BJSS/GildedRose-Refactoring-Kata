@@ -18,7 +18,7 @@ public class ItemChecker {
             }
         }
     }
-    
+
     private static void allHaveValidQuality(Item[] items) throws RuntimeException {
         for (int index = 0; index < items.length; index++) {
             if (items[index].name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -30,5 +30,4 @@ public class ItemChecker {
             }
         }
     }
-
 }
