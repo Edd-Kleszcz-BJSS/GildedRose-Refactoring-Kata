@@ -1,7 +1,5 @@
 package com.gildedrose.items;
 
-import com.gildedrose.Quality;
-
 public class AgedBrie extends ConnectorItem {
     public AgedBrie(int sellIn, int quality) {
         super("Aged Brie", sellIn, quality);

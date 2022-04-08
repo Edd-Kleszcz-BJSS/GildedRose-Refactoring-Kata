@@ -1,7 +1,5 @@
 package com.gildedrose.items;
 
-import com.gildedrose.Quality;
-
 public class Conjured extends ConnectorItem {
     public Conjured(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
