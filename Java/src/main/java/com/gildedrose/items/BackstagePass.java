@@ -12,7 +12,7 @@ public class BackstagePass extends Item implements UpdateQuality {
     public void updateItem() {
         sellIn--;
         quality += getIncrementValue();
-        resetExtremeQuality();
+        resetIllegalQuality();
     }
 
     private int getIncrementValue() {
@@ -23,7 +23,7 @@ public class BackstagePass extends Item implements UpdateQuality {
     }
 
     @Override
-    public void resetExtremeQuality() {
+    public void resetIllegalQuality() {
         if (quality > Quality.MAX.value) {
             quality = 50;
         } else if (quality < Quality.MIN.value) {

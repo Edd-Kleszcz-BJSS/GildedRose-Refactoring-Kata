@@ -11,7 +11,7 @@ public class Sulfuras extends Item implements UpdateQuality {
     public void updateItem() {}
 
     @Override
-    public void resetExtremeQuality() {
+    public void resetIllegalQuality() {
     }
 
     @Override

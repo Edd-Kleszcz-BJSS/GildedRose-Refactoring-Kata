@@ -12,16 +12,13 @@ public class AgedBrie extends Item implements UpdateQuality {
     public void updateItem() {
         sellIn--;
         quality += sellIn >= 0 ? 1 : 2;
-        resetExtremeQuality();
+        resetIllegalQuality();
     }
 
     @Override
-    public void resetExtremeQuality() {
-        if (quality > Quality.MAX.value) {
-            quality = 50;
-        } else if (quality < Quality.MIN.value) {
-            quality = 0;
-        }
+    public void resetIllegalQuality() {
+        quality = quality < Quality.MIN.value ? 0 : quality;
+        quality = quality > Quality.MAX.value ? 50 : quality;
     }
 
     @Override

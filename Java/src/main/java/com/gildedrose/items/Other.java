@@ -12,11 +12,11 @@ public class Other extends Item implements UpdateQuality {
     public void updateItem() {
         sellIn--;
         quality -= sellIn >= 0 ? 1 : 2;
-        resetExtremeQuality();
+        resetIllegalQuality();
     }
 
     @Override
-    public void resetExtremeQuality() {
+    public void resetIllegalQuality() {
         if (quality > Quality.MAX.value) {
             quality = 50;
         } else if (quality < Quality.MIN.value) {
