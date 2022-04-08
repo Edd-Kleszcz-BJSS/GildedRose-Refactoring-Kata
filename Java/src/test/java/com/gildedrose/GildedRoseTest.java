@@ -21,13 +21,6 @@ class GildedRoseTest {
     }
 
     @Test
-    void foo() {
-        GildedRose app = addAndUpdateApp(new Item[]{new Item("foo", 10, 10)});
-        assertEquals("foo", app.items[0].getName());
-    }
-
-
-    @Test
     void givenStandardItemBeforeSellIn_returnsDecrementedValues() {
         GildedRose app = addAndUpdateApp(new Item[]{new Item("foo", 10, 10)});
         assertEquals(9, getQuality(app,0));

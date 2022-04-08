@@ -12,6 +12,7 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             newItems[i] = ItemFactory.createItem(items[i].name, items[i].sellIn, items[i].quality);
         }
+
         this.items = newItems;
     }
 
@@ -20,5 +21,4 @@ class GildedRose {
             item.updateItem();
         }
     }
-
 }

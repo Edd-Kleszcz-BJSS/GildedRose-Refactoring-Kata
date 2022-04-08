@@ -8,7 +8,7 @@ public class ItemFactory {
             return new AgedBrie(sellIn, quality);
         } else if ("Backstage passes to a TAFKAL80ETC concert".equals(name)) {
             return new BackstagePass(sellIn, quality);
-        } else if (name.contains("Conjured")) {
+        } else if (name.contains("Conjured")) { //Extract to method
             return new Conjured(name, sellIn, quality);
         } else {
             return new Other(name, sellIn, quality);
