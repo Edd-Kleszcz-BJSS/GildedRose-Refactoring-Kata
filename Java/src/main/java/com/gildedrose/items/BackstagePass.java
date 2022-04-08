@@ -1,9 +1,8 @@
 package com.gildedrose.items;
 
-import com.gildedrose.Item;
 import com.gildedrose.Quality;
 
-public class BackstagePass extends Item implements UpdateQuality {
+public class BackstagePass extends ConnectorItem {
     public BackstagePass(int sellIn, int quality) {
         super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
     }
@@ -12,7 +11,7 @@ public class BackstagePass extends Item implements UpdateQuality {
     public void updateItem() {
         sellIn--;
         quality += getIncrementValue();
-        resetIllegalQuality();
+        super.resetIllegalQuality();
     }
 
     private int getIncrementValue() {
@@ -20,24 +19,5 @@ public class BackstagePass extends Item implements UpdateQuality {
         else if (sellIn < 5) return 3;
         else if (sellIn < 10) return 2;
         else return 1;
-    }
-
-    @Override
-    public void resetIllegalQuality() {
-        if (quality > Quality.MAX.value) {
-            quality = 50;
-        } else if (quality < Quality.MIN.value) {
-            quality = 0;
-        }
-    }
-
-    @Override
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    @Override
-    public int getQuality() {
-        return quality;
     }
 }
