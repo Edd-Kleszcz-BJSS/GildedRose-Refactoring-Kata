@@ -32,11 +32,6 @@ public class BackstagePass extends Item implements UpdateQuality {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
     public int getSellIn() {
         return sellIn;
     }
