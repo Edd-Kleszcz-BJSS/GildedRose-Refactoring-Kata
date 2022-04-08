@@ -10,16 +10,15 @@ class GildedRose {
 
     public void updateQuality() {
         for (int index = 0; index < items.length; index++) {
+            if (items[index].name.equals("Sulfuras, Hand of Ragnaros")) continue;
             items[index].sellIn--;
             updateItemValues(index, items[index].name);
-            resetQuality(index);
+            resetExtremeQuality(index);
         }
     }
 
     private void updateItemValues(int index, String itemName) {
-        if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
-            items[index].sellIn++;
-        } else if (itemName.equals("Aged Brie")) {
+        if (itemName.equals("Aged Brie")) {
             items[index].quality += getStandardIncrementValue(index, 1);
         } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
             items[index].quality += getTicketIncrementValue(index);
@@ -30,11 +29,10 @@ class GildedRose {
         }
     }
 
-    private void resetQuality(int index) {
-        if (items[index].quality >= Quality.MAX.value && !items[index].name.equals("Sulfuras, Hand of Ragnaros")) {
+    private void resetExtremeQuality(int index) {
+        if (items[index].quality > Quality.MAX.value) {
             items[index].quality = 50;
-        }
-        else if (items[index].quality < Quality.MIN.value) {
+        } else if (items[index].quality < Quality.MIN.value) {
             items[index].quality = 0;
         }
     }
