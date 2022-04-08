@@ -9,43 +9,48 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (int index = 0; index < items.length; index++) {
-            if (items[index].name.equals("Sulfuras, Hand of Ragnaros")) continue;
-            items[index].sellIn--;
-            updateItemValues(index, items[index].name);
-            resetExtremeQuality(index);
+        for (Item item: items) {
+            if (isLegendary(item)) continue;
+            item.sellIn--;
+            updateItemValues(item);
+            resetExtremeQuality(item);
         }
     }
 
-    private void updateItemValues(int index, String itemName) {
-        if (itemName.equals("Aged Brie")) {
-            items[index].quality += getStandardIncrementValue(index, 1);
-        } else if (itemName.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            items[index].quality += getTicketIncrementValue(index);
-        } else if (itemName.contains("Conjured")) {
-            items[index].quality -= getStandardIncrementValue(index, 2);
+    private boolean isLegendary(Item item) {
+        return item.name.equals("Sulfuras, Hand of Ragnaros");
+    }
+
+    //Refactor - (Switch), OO Abusers, 2nd vid
+    private void updateItemValues(Item item) {
+        if (item.name.equals("Aged Brie")) {
+            item.quality += getStandardIncrementValue(item, 1);
+        } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            item.quality += getTicketIncrementValue(item);
+        } else if (item.name.contains("Conjured")) {
+            item.quality -= getStandardIncrementValue(item, 2);
         } else {
-            items[index].quality -= getStandardIncrementValue(index, 1);
+            item.quality -= getStandardIncrementValue(item, 1);
         }
     }
 
-    private void resetExtremeQuality(int index) {
-        if (items[index].quality > Quality.MAX.value) {
-            items[index].quality = 50;
-        } else if (items[index].quality < Quality.MIN.value) {
-            items[index].quality = 0;
+    private void resetExtremeQuality(Item item) {
+        if (item.quality > Quality.MAX.value) {
+            item.quality = 50;
+        } else if (item.quality < Quality.MIN.value) {
+            item.quality = 0;
         }
     }
 
-    private int getStandardIncrementValue(int index, int incrementValue) {
-        return items[index].sellIn >= 0 ? incrementValue : 2 * incrementValue;
+    private int getStandardIncrementValue(Item item, int incrementValue) {
+        return item.sellIn >= 0 ? incrementValue : 2 * incrementValue;
     }
 
-    private int getTicketIncrementValue(int index) {
+    private int getTicketIncrementValue(Item item) {
         int increment;
-        if (items[index].sellIn < 0) increment = -items[index].quality;
-        else if (items[index].sellIn < 5) increment = 3;
-        else if (items[index].sellIn < 10) increment = 2;
+        if (item.sellIn < 0) increment = -item.quality;
+        else if (item.sellIn < 5) increment = 3;
+        else if (item.sellIn < 10) increment = 2;
         else increment = 1;
         return increment;
     }
