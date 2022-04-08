@@ -79,8 +79,6 @@ class GildedRoseTest {
         GildedRose app = addAndUpdateApp(new Item[] {new Item("Sulfuras, Hand of Ragnaros", 10, 15), new Item("Sulfuras, Hand of Ragnaros", 0, 25)});
         assertEquals(80, getQuality(app, 0));
         assertEquals(80, getQuality(app, 1));
-        assertEquals(10, getSellIn(app, 0));
-        assertEquals(0, getSellIn(app, 1));
     }
 
     @Test
@@ -100,16 +98,16 @@ class GildedRoseTest {
 
     @Test
     void givenBackstagePassBeforeSmallSellIn_returnDoubleIncrementedQuality() {
-        GildedRose app = addAndUpdateApp(new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 9, 10)});
+        GildedRose app = addAndUpdateApp(new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10)});
         assertEquals(12, getQuality(app, 0));
-        assertEquals(8, getSellIn(app, 0));
+        assertEquals(9, getSellIn(app, 0));
     }
 
     @Test
     void givenBackstagePassBeforeTinySellIn_returnTripleIncrementedQuality() {
-        GildedRose app = addAndUpdateApp(new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 4, 10)});
+        GildedRose app = addAndUpdateApp(new Item[] {new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10)});
         assertEquals(13, getQuality(app, 0));
-        assertEquals(3, getSellIn(app, 0));
+        assertEquals(4, getSellIn(app, 0));
     }
 
     @Test

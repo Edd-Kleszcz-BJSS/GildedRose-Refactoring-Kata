@@ -18,7 +18,6 @@ class GildedRose {
 
     private void updateItemValues(int index, String itemName) {
         if (itemName.equals("Sulfuras, Hand of Ragnaros")) {
-            items[index].quality = Quality.SULFURAS.value;
             items[index].sellIn++;
         } else if (itemName.equals("Aged Brie")) {
             items[index].quality += getStandardIncrementValue(index, 1);
@@ -40,8 +39,8 @@ class GildedRose {
         }
     }
 
-    private int getStandardIncrementValue(int index, int multiplier) {
-        return items[index].sellIn >= 0 ? multiplier : 2 * multiplier;
+    private int getStandardIncrementValue(int index, int incrementValue) {
+        return items[index].sellIn >= 0 ? incrementValue : 2 * incrementValue;
     }
 
     private int getTicketIncrementValue(int index) {
