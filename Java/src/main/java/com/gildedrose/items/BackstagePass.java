@@ -1,6 +1,7 @@
 package com.gildedrose.items;
 
 import com.gildedrose.Item;
+import com.gildedrose.Quality;
 
 public class BackstagePass extends Item implements UpdateQuality {
     public BackstagePass(int sellIn, int quality) {
@@ -11,6 +12,7 @@ public class BackstagePass extends Item implements UpdateQuality {
     public void updateItem() {
         sellIn--;
         quality += getIncrementValue();
+        resetExtremeQuality();
     }
 
     private int getIncrementValue() {
@@ -18,5 +20,29 @@ public class BackstagePass extends Item implements UpdateQuality {
         else if (sellIn < 5) return 3;
         else if (sellIn < 10) return 2;
         else return 1;
+    }
+
+    @Override
+    public void resetExtremeQuality() {
+        if (quality > Quality.MAX.value) {
+            quality = 50;
+        } else if (quality < Quality.MIN.value) {
+            quality = 0;
+        }
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getSellIn() {
+        return sellIn;
+    }
+
+    @Override
+    public int getQuality() {
+        return quality;
     }
 }

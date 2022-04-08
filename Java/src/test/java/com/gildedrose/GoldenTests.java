@@ -21,59 +21,55 @@ public class GoldenTests {
 
     @Test
     void after1DayTick_returnsItemsWithTheirExpectedQualityAndSellInValues() {
-        Item[] items = createItems();
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(createItems());
         int[][] expectedValues = {{9, 19}, {1, 1}, {4, 6}, {0, 80}, {-1, 80}, {14, 21}, {9, 50}, {4, 50}, {2, 4}};
         app.updateQuality();
 
-        for(int index = 0; index < items.length; index++) {
-            assertEquals(expectedValues[index][0], items[index].sellIn);
-            assertEquals(expectedValues[index][1], items[index].quality);
+        for(int index = 0; index < app.items.length; index++) {
+            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
+            assertEquals(expectedValues[index][1], app.items[index].getQuality());
         }
     }
 
     @Test
     void after3DayTicks_returnsItemsWithTheirExpectedQualityAndSellInValues() {
-        Item[] items = createItems();
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(createItems());
         int[][] expectedValues = {{7, 17}, {-1, 4}, {2, 4}, {0, 80}, {-1, 80}, {12, 23}, {7, 50}, {2, 50}, {0, 0}};
         for (int day = 0; day < 3; day++) {
             app.updateQuality();
         }
 
-        for(int index = 0; index < items.length; index++) {
-            assertEquals(expectedValues[index][0], items[index].sellIn);
-            assertEquals(expectedValues[index][1], items[index].quality);
+        for(int index = 0; index < app.items.length; index++) {
+            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
+            assertEquals(expectedValues[index][1], app.items[index].getQuality());
         }
     }
 
     @Test
     void after10DayTicks_returnsItemsWithTheirExpectedQualityAndSellInValues() {
-        Item[] items = createItems();
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(createItems());
         int[][] expectedValues = {{0, 10}, {-8, 18}, {-5, 0}, {0, 80}, {-1, 80}, {5, 35}, {0, 50}, {-5, 0}, {-7, 0}};
         for (int day = 0; day < 10; day++) {
             app.updateQuality();
         }
 
-        for(int index = 0; index < items.length; index++) {
-            assertEquals(expectedValues[index][0], items[index].sellIn);
-            assertEquals(expectedValues[index][1], items[index].quality);
+        for(int index = 0; index < app.items.length; index++) {
+            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
+            assertEquals(expectedValues[index][1], app.items[index].getQuality());
         }
     }
 
     @Test
     void after16DayTicks_returnsItemsWithTheirExpectedQualityAndSellInValues() {
-        Item[] items = createItems();
-        GildedRose app = new GildedRose(items);
+        GildedRose app = new GildedRose(createItems());
         int[][] expectedValues = {{-6, 0}, {-14, 30}, {-11, 0}, {0, 80}, {-1, 80}, {-1, 0}, {-6, 0}, {-11, 0}, {-13, 0}};
         for (int day = 0; day < 16; day++) {
             app.updateQuality();
         }
 
-        for(int index = 0; index < items.length; index++) {
-            assertEquals(expectedValues[index][0], items[index].sellIn);
-            assertEquals(expectedValues[index][1], items[index].quality);
+        for(int index = 0; index < app.items.length; index++) {
+            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
+            assertEquals(expectedValues[index][1], app.items[index].getQuality());
         }
     }
 

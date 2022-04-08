@@ -13,17 +13,17 @@ class GildedRoseTest {
     }
 
     private int getQuality(GildedRose app, int index) {
-        return app.items[index].quality;
+        return app.items[index].getQuality();
     }
 
     private int getSellIn(GildedRose app, int index) {
-        return app.items[index].sellIn;
+        return app.items[index].getSellIn();
     }
 
     @Test
     void foo() {
         GildedRose app = addAndUpdateApp(new Item[]{new Item("foo", 10, 10)});
-        assertEquals("foo", app.items[0].name);
+        assertEquals("foo", app.items[0].getName());
     }
 
 
