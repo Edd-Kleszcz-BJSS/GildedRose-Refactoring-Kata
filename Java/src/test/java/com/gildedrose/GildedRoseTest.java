@@ -13,11 +13,13 @@ class GildedRoseTest {
     }
 
     private int getQuality(GildedRose app, int index) {
-        return app.items[index].getQuality();
+        Item item = (Item) app.items[index];
+        return item.quality;
     }
 
     private int getSellIn(GildedRose app, int index) {
-        return app.items[index].getSellIn();
+        Item item = (Item) app.items[index];
+        return item.sellIn;
     }
 
     @Test
@@ -164,14 +166,14 @@ class GildedRoseTest {
     void givenAnItemWithNegativeQuality_throwsAnErrorBeforeAppCreation() {
         Item item = new Item("test", 10, -1);
         RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
-        assertEquals("Item quality insufficient",exception.getMessage());
+        assertEquals("Item has Illegal Quality",exception.getMessage());
     }
 
     @Test
     void givenAnItemWithExtremeQuality_throwsAnErrorBeforeAppCreation() {
         Item item = new Item("test", 10, 51);
         RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
-        assertEquals("Item quality extreme",exception.getMessage());
+        assertEquals("Item has Illegal Quality",exception.getMessage());
     }
 
     @Test
@@ -192,13 +194,11 @@ class GildedRoseTest {
     @Test
     void givenNullFieldInItem_throwsNullException() {
         Item[] items = new Item[] {new Item(null, 0, 0)};
-        NullPointerException exception = Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(items));
-        assertEquals("Items must be fully defined",exception.getMessage());
+        Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(items));
     }
 
     @Test
     void givenNullItemsArray_throwsNullException() {
-        NullPointerException exception = Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(null));
-        assertEquals("Items must be fully defined", exception.getMessage());
+        Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(null));
     }
 }

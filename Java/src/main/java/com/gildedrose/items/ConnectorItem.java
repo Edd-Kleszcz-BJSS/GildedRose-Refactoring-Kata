@@ -2,24 +2,20 @@ package com.gildedrose.items;
 
 import com.gildedrose.Item;
 import com.gildedrose.Quality;
+import org.jetbrains.annotations.NotNull;
 
 abstract public class ConnectorItem extends Item implements UpdateQuality {
-    public ConnectorItem(String name, int sellIn, int quality) {
+    public ConnectorItem(@NotNull String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
-    @Override
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    @Override
-    public int getQuality() {
-        return quality;
-    }
-
     protected void resetIllegalQuality() {
-        quality = quality < Quality.MIN.value ? 0 : quality;
-        quality = quality > Quality.MAX.value ? 50 : quality;
+        quality = Math.max(quality, Quality.MIN.value);
+        quality = Math.min(quality, Quality.MAX.value);
+    }
+
+    @Override
+    public boolean hasInvalidQuality() {
+        return quality < Quality.MIN.value || quality > Quality.MAX.value;
     }
 }

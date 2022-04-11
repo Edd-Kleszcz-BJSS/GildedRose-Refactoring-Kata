@@ -26,8 +26,9 @@ public class GoldenTests {
         app.updateQuality();
 
         for(int index = 0; index < app.items.length; index++) {
-            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
-            assertEquals(expectedValues[index][1], app.items[index].getQuality());
+            Item item = (Item) app.items[index];
+            assertEquals(expectedValues[index][0], item.sellIn);
+            assertEquals(expectedValues[index][1], item.quality);
         }
     }
 
@@ -40,8 +41,9 @@ public class GoldenTests {
         }
 
         for(int index = 0; index < app.items.length; index++) {
-            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
-            assertEquals(expectedValues[index][1], app.items[index].getQuality());
+            Item item = (Item) app.items[index];
+            assertEquals(expectedValues[index][0], item.sellIn);
+            assertEquals(expectedValues[index][1], item.quality);
         }
     }
 
@@ -54,8 +56,9 @@ public class GoldenTests {
         }
 
         for(int index = 0; index < app.items.length; index++) {
-            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
-            assertEquals(expectedValues[index][1], app.items[index].getQuality());
+            Item item = (Item) app.items[index];
+            assertEquals(expectedValues[index][0], item.sellIn);
+            assertEquals(expectedValues[index][1], item.quality);
         }
     }
 
@@ -68,8 +71,9 @@ public class GoldenTests {
         }
 
         for(int index = 0; index < app.items.length; index++) {
-            assertEquals(expectedValues[index][0], app.items[index].getSellIn());
-            assertEquals(expectedValues[index][1], app.items[index].getQuality());
+            Item item = (Item) app.items[index];
+            assertEquals(expectedValues[index][0], item.sellIn);
+            assertEquals(expectedValues[index][1], item.quality);
         }
     }
 
