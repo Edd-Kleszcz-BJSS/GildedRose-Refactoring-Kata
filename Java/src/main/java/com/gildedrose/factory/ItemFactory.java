@@ -1,6 +1,6 @@
-package com.gildedrose.items;
+package com.gildedrose.factory;
 
-import com.gildedrose.items.services.CreateItem;
+import com.gildedrose.items.*;
 import com.gildedrose.items.services.UpdateQuality;
 
 public class ItemFactory implements CreateItem {

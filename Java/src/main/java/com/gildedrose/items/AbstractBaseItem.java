@@ -5,8 +5,8 @@ import com.gildedrose.Quality;
 import com.gildedrose.items.services.UpdateQuality;
 import org.jetbrains.annotations.NotNull;
 
-abstract public class ConnectorItem extends Item implements UpdateQuality {
-    public ConnectorItem(@NotNull String name, int sellIn, int quality) {
+abstract public class AbstractBaseItem extends Item implements UpdateQuality {
+    public AbstractBaseItem(@NotNull String name, int sellIn, int quality) {
         super(name, sellIn, quality);
         checkIsValidObject(name, quality);
     }

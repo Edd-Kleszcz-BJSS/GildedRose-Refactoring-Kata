@@ -1,6 +1,6 @@
 package com.gildedrose.items;
 
-public class Conjured extends ConnectorItem {
+public class Conjured extends AbstractBaseItem {
     public Conjured(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }

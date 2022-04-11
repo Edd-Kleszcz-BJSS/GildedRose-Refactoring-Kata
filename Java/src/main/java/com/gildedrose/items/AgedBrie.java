@@ -1,6 +1,6 @@
 package com.gildedrose.items;
 
-public class AgedBrie extends ConnectorItem {
+public class AgedBrie extends AbstractBaseItem {
     public AgedBrie(int sellIn, int quality) {
         super("Aged Brie", sellIn, quality);
     }

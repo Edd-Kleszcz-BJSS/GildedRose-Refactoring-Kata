@@ -1,6 +1,6 @@
 package com.gildedrose.items;
 
-public class BackstagePass extends ConnectorItem {
+public class BackstagePass extends AbstractBaseItem {
     public BackstagePass(int sellIn, int quality) {
         super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
     }

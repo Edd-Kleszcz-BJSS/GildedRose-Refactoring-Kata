@@ -1,7 +1,7 @@
 package com.gildedrose;
 
-import com.gildedrose.items.ItemFactory;
-import com.gildedrose.items.services.CreateItem;
+import com.gildedrose.factory.ItemFactory;
+import com.gildedrose.factory.CreateItem;
 import com.gildedrose.items.services.UpdateQuality;
 
 public class TexttestFixture {

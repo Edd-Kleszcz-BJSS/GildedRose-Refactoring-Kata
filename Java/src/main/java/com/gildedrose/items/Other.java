@@ -1,6 +1,6 @@
 package com.gildedrose.items;
 
-public class Other extends ConnectorItem {
+public class Other extends AbstractBaseItem {
     public Other(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
