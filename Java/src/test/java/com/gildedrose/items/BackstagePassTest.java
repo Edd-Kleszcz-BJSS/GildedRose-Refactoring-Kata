@@ -1,5 +1,6 @@
 package com.gildedrose.items;
 
+import com.gildedrose.Quality;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,6 +32,21 @@ class BackstagePassTest {
         BackstagePass pass = new BackstagePass(0, 20);
         pass.updateItem();
         assertEquals(0, pass.quality);
+    }
+
+    @Test
+    void givenAnUpdate_sellInDecreaseBy1() {
+        BackstagePass pass = new BackstagePass(10, 10);
+        pass.updateItem();
+        assertEquals(9, pass.sellIn);
+    }
+
+    @Test
+    void onUpdate_ifQualityBecomesIllegal_returnQualityWithinBounds() {
+        int nearMax = Quality.MAX.value - 1;
+        BackstagePass pass = new BackstagePass(4, nearMax);
+        pass.updateItem();
+        assertEquals(Quality.MAX.value, pass.quality);
     }
 
     @Test

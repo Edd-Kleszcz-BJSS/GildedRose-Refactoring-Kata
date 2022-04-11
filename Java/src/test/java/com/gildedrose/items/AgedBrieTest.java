@@ -1,5 +1,6 @@
 package com.gildedrose.items;
 
+import com.gildedrose.Quality;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,6 +23,21 @@ class AgedBrieTest {
 
         assertEquals(12, brie.quality);
         assertEquals(12, brie2.quality);
+    }
+
+    @Test
+    void givenAnUpdate_sellInDecreaseBy1() {
+        AgedBrie brie = new AgedBrie(10, 10);
+        brie.updateItem();
+        assertEquals(9, brie.sellIn);
+    }
+
+    @Test
+    void onUpdate_ifQualityBecomesIllegal_returnQualityWithinBounds() {
+        int nearMax = Quality.MAX.value - 1;
+        AgedBrie brie = new AgedBrie(-3, nearMax);
+        brie.updateItem();
+        assertEquals(Quality.MAX.value, brie.quality);
     }
 
     @Test
