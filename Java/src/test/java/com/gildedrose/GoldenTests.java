@@ -1,22 +1,26 @@
 package com.gildedrose;
 
+import com.gildedrose.items.ItemFactory;
+import com.gildedrose.items.services.CreateItem;
+import com.gildedrose.items.services.UpdateQuality;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GoldenTests {
-    public Item[] createItems() {
-        return new Item[]{
-            new Item("+5 Dexterity Vest", 10, 20),
-            new Item("Aged Brie", 2, 0),
-            new Item("Elixir of the Mongoose", 5, 7),
-            new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-            new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-            new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-            new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-            new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+    CreateItem itemFactory = new ItemFactory();
+    public UpdateQuality[] createItems() {
+        return new UpdateQuality[]{
+            itemFactory.createItem("+5 Dexterity Vest", 10, 20),
+            itemFactory.createItem("Aged Brie", 2, 0),
+            itemFactory.createItem("Elixir of the Mongoose", 5, 7),
+            itemFactory.createItem("Sulfuras, Hand of Ragnaros", 0, 80),
+            itemFactory.createItem("Sulfuras, Hand of Ragnaros", -1, 80),
+            itemFactory.createItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+            itemFactory.createItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+            itemFactory.createItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
             // this conjured item does not work properly yet
-            new Item("Conjured Mana Cake", 3, 6)};
+            itemFactory.createItem("Conjured Mana Cake", 3, 6)};
     }
 
     @Test
