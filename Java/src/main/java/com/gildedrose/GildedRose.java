@@ -1,18 +1,17 @@
 package com.gildedrose;
 
 import com.gildedrose.items.ItemFactory;
-import com.gildedrose.items.UpdateQuality;
+import com.gildedrose.items.services.UpdateQuality;
+import org.jetbrains.annotations.NotNull;
 
 class GildedRose {
     UpdateQuality[] items;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(@NotNull Item[] items) {
         UpdateQuality[] newItems = new UpdateQuality[items.length];
         for (int i = 0; i < items.length; i++) {
-            newItems[i] = ItemFactory.createItem(items[i].name, items[i].sellIn, items[i].quality);
+            newItems[i] = ItemFactory.createItem(items[i]);
         }
-        ItemChecker.areValidItems(newItems);
-
         this.items = newItems;
     }
 

@@ -12,9 +12,4 @@ public class Sulfuras extends ConnectorItem {
 
     @Override
     protected void resetIllegalQuality() {}
-
-    @Override
-    public boolean hasInvalidQuality() {
-        return false;
-    }
 }

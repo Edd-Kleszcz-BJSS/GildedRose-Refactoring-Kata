@@ -165,15 +165,13 @@ class GildedRoseTest {
     @Test
     void givenAnItemWithNegativeQuality_throwsAnErrorBeforeAppCreation() {
         Item item = new Item("test", 10, -1);
-        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
-        assertEquals("Item has Illegal Quality",exception.getMessage());
+        Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
     }
 
     @Test
     void givenAnItemWithExtremeQuality_throwsAnErrorBeforeAppCreation() {
         Item item = new Item("test", 10, 51);
-        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
-        assertEquals("Item has Illegal Quality",exception.getMessage());
+        Assertions.assertThrows(RuntimeException.class, () -> new GildedRose(new Item[] {item}));
     }
 
     @Test
@@ -185,13 +183,6 @@ class GildedRoseTest {
     }
 
     @Test
-    void givenEmptyItemsArray_throwsAnException() {
-        Item[] items = new Item[] {};
-        NullPointerException exception = Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(items));
-        assertEquals("Items empty", exception.getMessage());
-    }
-
-    @Test
     void givenNullFieldInItem_throwsNullException() {
         Item[] items = new Item[] {new Item(null, 0, 0)};
         Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(items));
@@ -199,6 +190,6 @@ class GildedRoseTest {
 
     @Test
     void givenNullItemsArray_throwsNullException() {
-        Assertions.assertThrows(NullPointerException.class, () -> new GildedRose(null));
+        Assertions.assertThrows(Exception.class, () -> new GildedRose(null));
     }
 }
