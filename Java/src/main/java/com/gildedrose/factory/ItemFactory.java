@@ -5,7 +5,7 @@ import com.gildedrose.items.services.UpdateQuality;
 
 public class ItemFactory implements CreateItem {
     @Override
-        public UpdateQuality createItem(String name, int sellIn, int quality) throws RuntimeException {
+        public UpdateQuality createItem(String name, int sellIn, int quality) {
         if ("Sulfuras, Hand of Ragnaros".equals(name)) {
             return new Sulfuras(sellIn);
         } else if ("Aged Brie".equals(name)) {
@@ -14,6 +14,8 @@ public class ItemFactory implements CreateItem {
             return new BackstagePass(sellIn, quality);
         } else if (name.contains("Conjured")) { //Extract to method
             return new Conjured(name, sellIn, quality);
+        } else if (name.contains("Artifact")) {
+            return new Artifact(sellIn, quality);
         } else {
             return new Other(name, sellIn, quality);
         }

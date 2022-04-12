@@ -32,4 +32,9 @@ class ItemFactoryTest {
     void givenConjuredItem_returnConjuredObject() {
         assertEquals(Conjured.class, itemFactory.createItem("Conjured Cake", 10, 10).getClass());
     }
+
+    @Test
+    void givenArtifactItem_returnArtifactObject() {
+        assertEquals(Artifact.class, itemFactory.createItem("Ancient Artifact", 10, 10).getClass());
+    }
 }
